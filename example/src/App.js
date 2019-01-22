@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 
-import ExampleComponent from 'kn-react'
+import KnReact from 'kn-react';
 
 export default class App extends Component {
   render () {
     return (
       <div>
-        <ExampleComponent text='Modern React component module' />
+        { KnReact.format.commas(10203)}
       </div>
     )
   }
