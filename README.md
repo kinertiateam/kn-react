@@ -1,31 +1,22 @@
 # kn-react
 
-> 
-
-[![NPM](https://img.shields.io/npm/v/kn-react.svg)](https://www.npmjs.com/package/kn-react) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
-
-## Install
+A library of useful code for react apps.
 
 ```bash
-npm install --save kn-react
+npm install --save git+https://github.com/kinertiateam/kn-react.git#961b488
 ```
 
-## Usage
+```js
+import { withContext } from 'kn-react';
+import { SomeContext } from './SomeContext';
 
-```jsx
-import React, { Component } from 'react'
+const thingWithContext = props => {
+  return (
+    <div>{ props.thingFromContext }</div>
+  )
+};
 
-import MyComponent from 'kn-react'
-
-class Example extends Component {
-  render () {
-    return (
-      <MyComponent />
-    )
-  }
-}
+export default withContext( SomeContext, thingWithContext);
 ```
 
-## License
 
-MIT © [kinertiateam](https://github.com/kinertiateam)
