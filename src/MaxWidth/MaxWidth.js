@@ -2,7 +2,7 @@ import React from 'react';
 
 export default props => {
   const styles = {
-    ...(props.styles || {}),
+    ...(props.style || {}),
     marginLeft: 'auto',
     marginRight: 'auto',
     maxWidth: props.maxWidth,
