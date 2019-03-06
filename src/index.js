@@ -8,6 +8,7 @@ import JsonModel from './JsonModel/JsonModel';
 import log from './Log/log';
 import MaxWidth from './MaxWidth/MaxWidth';
 import withContext from './WithContext/withContext';
+import enumerateTimeBetweenMoments from './EnumerateTimeBetweenMoments/enumerateTimeBetweenMoments';
 
 export { AutoError };
 export { format };
@@ -19,6 +20,7 @@ export { JsonModel };
 export { log };
 export { MaxWidth };
 export { withContext };
+export { enumerateTimeBetweenMoments };
 
 export default {
   AutoError,
@@ -31,4 +33,5 @@ export default {
   log,
   MaxWidth,
   withContext,
+  enumerateTimeBetweenMoments
 }
