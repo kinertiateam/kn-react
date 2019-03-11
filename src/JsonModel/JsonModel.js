@@ -5,7 +5,7 @@ export default class JsonModel {
   static modelFromJSON(model, json){
     for (let k in json){
       let v = json[k];
-      if (k.endsWith('_at') && v) {
+      if ((k.endsWith('_at') || k.endsWith('_on')) && v) {
         v = new Date(v);
       }
 
