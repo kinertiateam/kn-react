@@ -26,7 +26,7 @@ export function validate(state, validations){
       const variable = state[k];
 
       // Presence
-      if(validation.presence && (!variable || !variable.length)){
+      if(validation.presence && (!variable)){
         invalid(validation.presence.message);
       }
 
