@@ -9,6 +9,7 @@ import log from './Log/log';
 import MaxWidth from './MaxWidth/MaxWidth';
 import withContext from './WithContext/withContext';
 import enumerateTimeBetweenMoments from './EnumerateTimeBetweenMoments/enumerateTimeBetweenMoments';
+import escapeRegExpString from './EscapeRegExpString/escapeRegExpString';
 
 export { AutoError };
 export { format };
@@ -21,6 +22,7 @@ export { log };
 export { MaxWidth };
 export { withContext };
 export { enumerateTimeBetweenMoments };
+export { escapeRegExpString };
 
 export default {
   AutoError,
@@ -33,5 +35,6 @@ export default {
   log,
   MaxWidth,
   withContext,
-  enumerateTimeBetweenMoments
+  enumerateTimeBetweenMoments,
+  escapeRegExpString
 }
