@@ -10,6 +10,7 @@ import MaxWidth from './MaxWidth/MaxWidth';
 import withContext from './WithContext/withContext';
 import enumerateTimeBetweenMoments from './EnumerateTimeBetweenMoments/enumerateTimeBetweenMoments';
 import escapeRegExpString from './EscapeRegExpString/escapeRegExpString';
+import stringifyParamsObject from './StringifyParamsObject/stringifyParamsObject';
 
 export { AutoError };
 export { format };
@@ -23,6 +24,7 @@ export { MaxWidth };
 export { withContext };
 export { enumerateTimeBetweenMoments };
 export { escapeRegExpString };
+export { stringifyParamsObject };
 
 export default {
   AutoError,
@@ -36,5 +38,6 @@ export default {
   MaxWidth,
   withContext,
   enumerateTimeBetweenMoments,
-  escapeRegExpString
+  escapeRegExpString,
+  stringifyParamsObject,
 }
