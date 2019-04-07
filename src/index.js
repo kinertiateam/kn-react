@@ -12,6 +12,7 @@ import enumerateTimeBetweenMoments from './EnumerateTimeBetweenMoments/enumerate
 import escapeRegExpString from './EscapeRegExpString/escapeRegExpString';
 import stringifyParamsObject from './StringifyParamsObject/stringifyParamsObject';
 import randomString from './RandomString/randomString';
+import parseSearchParams from './ParseSearchParams/parseSearchParams';
 
 export { AutoError };
 export { format };
@@ -27,6 +28,7 @@ export { enumerateTimeBetweenMoments };
 export { escapeRegExpString };
 export { stringifyParamsObject };
 export { randomString };
+export { parseSearchParams };
 
 export default {
   AutoError,
@@ -43,4 +45,5 @@ export default {
   escapeRegExpString,
   stringifyParamsObject,
   randomString,
+  parseSearchParams,
 }
