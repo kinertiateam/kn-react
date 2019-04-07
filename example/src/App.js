@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { stringifyParamsObject } from 'kn-react';
+import { stringifyParamsObject, randomString } from 'kn-react';
 
 export default class App extends Component {
   render () {
@@ -14,7 +14,7 @@ export default class App extends Component {
     
     return (
       <div>
-        { stringifyParamsObject(paramsObject) }
+        { randomString() }
       </div>
     )
   }

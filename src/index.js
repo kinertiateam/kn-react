@@ -11,6 +11,7 @@ import withContext from './WithContext/withContext';
 import enumerateTimeBetweenMoments from './EnumerateTimeBetweenMoments/enumerateTimeBetweenMoments';
 import escapeRegExpString from './EscapeRegExpString/escapeRegExpString';
 import stringifyParamsObject from './StringifyParamsObject/stringifyParamsObject';
+import randomString from './RandomString/randomString';
 
 export { AutoError };
 export { format };
@@ -25,6 +26,7 @@ export { withContext };
 export { enumerateTimeBetweenMoments };
 export { escapeRegExpString };
 export { stringifyParamsObject };
+export { randomString };
 
 export default {
   AutoError,
@@ -40,4 +42,5 @@ export default {
   enumerateTimeBetweenMoments,
   escapeRegExpString,
   stringifyParamsObject,
+  randomString,
 }
