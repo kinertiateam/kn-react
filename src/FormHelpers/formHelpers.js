@@ -42,7 +42,7 @@ export function validate(state, validations){
       }
 
       //Pattern
-      if(validation.regex && !validation.pattern.test(variable)){
+      if(validation.regex && !validation.regex.pattern.test(variable)){
         invalid(validation.regex.message);
       }
 
