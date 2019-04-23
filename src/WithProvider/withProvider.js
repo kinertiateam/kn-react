@@ -8,16 +8,16 @@ const withProvider = function(Providers, Component){
     Providers.push(arguments[i]);
   }
 
-  return props => nestProviders(Providers, Component);
+  return props => nestProviders(Providers, Component, props);
 }
 
 
-const nestProviders = function(Providers, Component){
+const nestProviders = function(Providers, Component, props){
   const Provider = Providers[0];
 
   return (
     <Provider>
-      { Providers.length === 1 ? <Component/> : nestProviders(Providers.slice(1), Component) }
+      { Providers.length === 1 ? <Component {...props}/> : nestProviders(Providers.slice(1), Component) }
     </Provider>
   );
 }
