@@ -17,7 +17,7 @@ const nestProviders = function(Providers, Component, props){
 
   return (
     <Provider>
-      { Providers.length === 1 ? <Component {...props}/> : nestProviders(Providers.slice(1), Component) }
+      { Providers.length === 1 ? <Component {...props}/> : nestProviders(Providers.slice(1), Component, props) }
     </Provider>
   );
 }
