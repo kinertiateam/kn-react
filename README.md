@@ -3,7 +3,7 @@
 A library of useful code for react apps.
 
 ```bash
-npm install --save git+https://github.com/kinertiateam/kn-react.git#961b488
+npm install --save git+https://github.com/kinertiateam/kn-react.git#359818a
 ```
 
 ```js
