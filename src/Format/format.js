@@ -41,3 +41,7 @@ export function duration (seconds){
   const mmss = mm + ':' + ss;
   return hh == '00' ? mmss : hh + ':' + mmss;
 }
+
+export function dateTime (d){
+  return ! d instanceof Date ? '' : d3TimeFormat.timeFormat('%Y-%m-%d, %I:%M %p')(d);
+}
