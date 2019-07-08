@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { stringifyParamsObject, randomString, format } from 'kn-react';
+import { stringifyParamsObject, randomString, format, ScrollTo } from 'kn-react';
 
 export default class App extends Component {
   render () {
@@ -16,7 +16,7 @@ export default class App extends Component {
 
     return (
       <div>
-        { randomString() },{ date }
+        { randomString() },{ date }, <ScrollTo/>
       </div>
     )
   }

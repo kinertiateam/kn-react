@@ -14,6 +14,7 @@ import escapeRegExpString from './EscapeRegExpString/escapeRegExpString';
 import stringifyParamsObject from './StringifyParamsObject/stringifyParamsObject';
 import randomString from './RandomString/randomString';
 import parseSearchParams from './ParseSearchParams/parseSearchParams';
+import ScrollTo from './ScrollTo/ScrollTo'
 
 export { AutoError };
 export { format };
@@ -31,6 +32,7 @@ export { escapeRegExpString };
 export { stringifyParamsObject };
 export { randomString };
 export { parseSearchParams };
+export { ScrollTo };
 
 export default {
   AutoError,
@@ -48,4 +50,5 @@ export default {
   stringifyParamsObject,
   randomString,
   parseSearchParams,
+  ScrollTo,
 }
