@@ -42,6 +42,8 @@ export function duration (seconds){
   return hh == '00' ? mmss : hh + ':' + mmss;
 }
 
-export function dateTime (d){
-  return ! d instanceof Date ? '' : d3TimeFormat.timeFormat('%Y-%m-%d, %I:%M %p')(d);
+export function dateTime (d, showSeconds){
+  return ! d instanceof Date ? '' :
+    (showSeconds ? d3TimeFormat.timeFormat('%Y-%m-%d, %I:%M %p')(d) :
+    d3TimeFormat.timeFormat('%Y-%m-%d, %I:%M:%S %p')(d));
 }

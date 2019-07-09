@@ -12,11 +12,12 @@ export default class App extends Component {
       param4: 'peltier'
     }
 
-    const date = format.dateTime((new Date()).getDate());
+    const date = format.dateTime((new Date()),false);
+    const date2 = format.dateTime((new Date()),true);
 
     return (
       <div>
-        { randomString() },{ date }, <ScrollTo/>
+        { randomString() },{ date }, { date2 }
       </div>
     )
   }
