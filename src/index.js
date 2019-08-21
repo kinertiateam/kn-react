@@ -1,54 +1,18 @@
-import AutoError from './AutoError/AutoError';
-import * as format from './Format/format';
-import * as formHelpers from './FormHelpers/formHelpers';
-import usStatesList from './FormHelpers/usStatesList';
-import usStatesDict from './FormHelpers/usStatesDict';
-import * as JsConvertCase from './JsConvertCase/JsConvertCase';
-import JsonModel from './JsonModel/JsonModel';
-import log from './Log/log';
-import MaxWidth from './MaxWidth/MaxWidth';
-import withContext from './WithContext/withContext';
-import withProvider from './WithProvider/withProvider';
-import enumerateTimeBetweenMoments from './EnumerateTimeBetweenMoments/enumerateTimeBetweenMoments';
-import escapeRegExpString from './EscapeRegExpString/escapeRegExpString';
-import stringifyParamsObject from './StringifyParamsObject/stringifyParamsObject';
-import randomString from './RandomString/randomString';
-import parseSearchParams from './ParseSearchParams/parseSearchParams';
-import ScrollTo from './ScrollTo/ScrollTo'
-
-export { AutoError };
-export { format };
-export { formHelpers };
-export { usStatesList };
-export { usStatesDict };
-export { JsConvertCase };
-export { JsonModel };
-export { log };
-export { MaxWidth };
-export { withContext };
-export { withProvider };
-export { enumerateTimeBetweenMoments };
-export { escapeRegExpString };
-export { stringifyParamsObject };
-export { randomString };
-export { parseSearchParams };
-export { ScrollTo };
-
-export default {
-  AutoError,
-  format,
-  formHelpers,
-  usStatesList,
-  usStatesDict,
-  JsConvertCase,
-  JsonModel,
-  log,
-  MaxWidth,
-  withContext,
-  enumerateTimeBetweenMoments,
-  escapeRegExpString,
-  stringifyParamsObject,
-  randomString,
-  parseSearchParams,
-  ScrollTo,
-}
+export { default as AutoError } from './AutoError/AutoError';
+export { default as format } from './Format/format';
+export { default as formHelpers } from  './FormHelpers/formHelpers';
+export { default as usStatesList } from './FormHelpers/usStatesList';
+export { default as usStatesDict } from './FormHelpers/usStatesDict';
+export { default as JsConvertCase } from './JsConvertCase/JsConvertCase';
+export { default as JsonModel } from './JsonModel/JsonModel';
+export { default as log } from './Log/log';
+export { default as MaxWidth } from './MaxWidth/MaxWidth';
+export { default as withContext } from './WithContext/withContext';
+export { default as withProvider } from './WithProvider/withProvider';
+export { default as enumerateTimeBetweenMoments } from './EnumerateTimeBetweenMoments/enumerateTimeBetweenMoments';
+export { default as escapeRegExpString } from './EscapeRegExpString/escapeRegExpString';
+export { default as stringifyParamsObject } from './StringifyParamsObject/stringifyParamsObject';
+export { default as randomString } from './RandomString/randomString';
+export { default as parseSearchParams } from './ParseSearchParams/parseSearchParams';
+export { default as ScrollTo } from './ScrollTo/ScrollTo';
+export { default as isStandalone } from './Standalone/isStandalone';

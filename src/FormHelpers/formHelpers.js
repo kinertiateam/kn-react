@@ -71,3 +71,9 @@ class ValidationError extends Error{
   }
 }
 const error = new Error('validateError');
+
+
+export default {
+  trim,
+  validate,
+}

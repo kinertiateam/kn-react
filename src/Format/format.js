@@ -47,3 +47,13 @@ export function dateTime (d, hideSeconds){
     (hideSeconds ? d3TimeFormat.timeFormat('%Y-%m-%d, %I:%M %p')(d) :
     d3TimeFormat.timeFormat('%Y-%m-%d, %I:%M:%S %p')(d));
 }
+
+export default {
+  money,
+  percent,
+  commas,
+  date,
+  phone,
+  duration,
+  dateTime
+}

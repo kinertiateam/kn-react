@@ -143,3 +143,19 @@ export function camelKeys(obj) {
   return res;
 }
 
+
+export default {
+  toCamelCase,
+  toSnakeCase,
+  toPascalCase,
+  toDotCase,
+  toPathCase,
+  toTextCase,
+  toSentenceCase,
+  toHeaderCase,
+  lowerKeys,
+  upperKeys,
+  snakeKeys,
+  pascalKeys,
+  camelKeys
+}
