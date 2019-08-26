@@ -6,12 +6,14 @@ export function money (d, options = {}){
   return isNaN(d) ? '' : d3Format.format(`$,.${options.decimals}f`)(d);
 }
 
-export function percent (d){
-  return isNaN(d) ? '' : d3Format.format('.1%')(d);
+export function percent (d, options = {}){
+  options.decimals = options.decimals === undefined ? 1 : options.decimals;
+  return isNaN(d) ? '' : d3Format.format(`.${options.decimals}%`)(d);
 }
 
-export function commas (d){
-  return isNaN(d) ? '' : d3Format.format(',.0f')(d);
+export function commas (d, options = {}){
+  options.decimals = options.decimals === undefined ? 0 : options.decimals;
+  return isNaN(d) ? '' : d3Format.format(`,.${options.decimals}f`)(d);
 }
 
 export function date (d){
