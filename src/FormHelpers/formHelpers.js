@@ -22,41 +22,45 @@ export function validate(state, validations){
 
 
     for (let k in validations) {
-      const validation = validations[k];
+      let validationArray = Array.isArray( validations[k] ) ? validations[k] : [ validations[k] ];
       const variable = state[k];
 
-      // Presence
-      if(validation.presence && (!variable)){
-        invalid(validation.presence.message);
-      }
+      let validation;
+      for( let i in validationArray ){
+        validation = validationArray[ i ];
 
-      // Length
-      if(validation.length){
-        if(validation.length.equalTo && variable.length != validation.length.equalTo){
-          invalid(validation.length.message);
-        } else if(validation.length.atLeast && variable.length < validation.length.atLeast){
-          invalid(validation.length.message);
-        } else if(validation.length.atMost && variable.length > validation.length.atMost){
-          invalid(validation.length.message);
-        }
-      }
-
-      //Pattern
-      if(validation.regex && !validation.regex.pattern.test(variable)){
-        invalid(validation.regex.message);
-      }
-
-      // Email
-      if(validation.email){
-        if(!emailPattern.test(variable)) {
-          invalid(validation.email.message);
+        // Presence
+        if(validation.presence && (!variable)){
+          invalid(validation.presence.message);
         }
 
-      }
+        // Length
+        if(validation.length){
+          if(validation.length.equalTo && variable.length != validation.length.equalTo){
+            invalid(validation.length.message);
+          } else if(validation.length.atLeast && variable.length < validation.length.atLeast){
+            invalid(validation.length.message);
+          } else if(validation.length.atMost && variable.length > validation.length.atMost){
+            invalid(validation.length.message);
+          }
+        }
 
-      // Equal to
-      if(validation.equalTo && variable != validation.equalTo.value){
-        invalid(validation.equalTo.message);
+        //Pattern
+        if(validation.regex && !validation.regex.pattern.test(variable)){
+          invalid(validation.regex.message);
+        }
+
+        // Email
+        if(validation.email){
+          if(!emailPattern.test(variable)) {
+            invalid(validation.email.message);
+          }
+        }
+
+        // Equal to
+        if(validation.equalTo && variable != validation.equalTo.value){
+          invalid(validation.equalTo.message);
+        }
       }
     }
 
