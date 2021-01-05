@@ -3,6 +3,8 @@ export { default as format } from './Format/format';
 export { default as formHelpers } from  './FormHelpers/formHelpers';
 export { default as usStatesList } from './FormHelpers/usStatesList';
 export { default as usStatesDict } from './FormHelpers/usStatesDict';
+export { default as canadaProvincesList } from './FormHelpers/canadaProvincesList';
+export { default as canadaProvincesDict } from './FormHelpers/canadaProvincesDict';
 export { default as JsConvertCase } from './JsConvertCase/JsConvertCase';
 export { default as JsonModel } from './JsonModel/JsonModel';
 export { default as log } from './Log/log';
