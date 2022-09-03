@@ -18,3 +18,4 @@ export { default as randomString } from './RandomString/randomString';
 export { default as parseSearchParams } from './ParseSearchParams/parseSearchParams';
 export { default as ScrollTo } from './ScrollTo/ScrollTo';
 export { default as isStandalone } from './Standalone/isStandalone';
+export { default as EntityAnalysisPhraseTrie } from './Trie/EntityAnalysisPhraseTrie';
