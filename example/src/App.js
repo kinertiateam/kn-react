@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Moment from 'moment';
 
-import { stringifyParamsObject, randomString, format, ScrollTo, enumerateTimeBetweenMoments } from 'kn-react';
+import { stringifyParamsObject, randomString, format, ScrollTo, enumerateTimeBetweenMoments, EntityAnalysisPhraseTrie, log } from 'kn-react';
 
 export default class App extends Component {
   render () {
@@ -25,8 +25,12 @@ export default class App extends Component {
     const startMoment = Moment('06/02/2020');
     const endMoment = Moment('07/18/2020');
 
-    // console.log('moments', enumerateTimeBetweenMoments(startMoment, endMoment, 'day', 'day'))
-    console.log('moments', enumerateTimeBetweenMoments(startMoment, endMoment, 'month', 'month'))
+    // log('moments', enumerateTimeBetweenMoments(startMoment, endMoment, 'day', 'day'))
+    log('moments', enumerateTimeBetweenMoments(startMoment, endMoment, 'month', 'month'))
+
+
+    const trie = new EntityAnalysisPhraseTrie();
+    log('trie', trie)
 
     return(
       <div>
