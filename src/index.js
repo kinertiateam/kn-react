@@ -19,3 +19,4 @@ export { default as parseSearchParams } from './ParseSearchParams/parseSearchPar
 export { default as ScrollTo } from './ScrollTo/ScrollTo';
 export { default as isStandalone } from './Standalone/isStandalone';
 export { default as EntityAnalysisPhraseTrie } from './Trie/EntityAnalysisPhraseTrie';
+export { default as constructPostMeetingTranscript } from './Transcripts/constructPostMeetingTranscript';
