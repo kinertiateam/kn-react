@@ -20,5 +20,3 @@ export { default as ScrollTo } from './ScrollTo/ScrollTo';
 export { default as isStandalone } from './Standalone/isStandalone';
 export { default as EntityAnalysisPhraseTrie } from './Trie/EntityAnalysisPhraseTrie';
 export { default as constructPostMeetingTranscript } from './Transcripts/constructPostMeetingTranscript';
-export { default as getAuthHeaders } from './Auth/getAuthHeaders';
-export { default as getUserRoleAuthHeaders } from './Auth/getUserRoleAuthHeaders';
