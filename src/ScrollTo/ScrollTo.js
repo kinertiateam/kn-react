@@ -1,3 +1,6 @@
+/*global window*/
+
+
 import React from 'react';
 
 export default class ScrollTo extends React.Component{
@@ -9,6 +12,11 @@ export default class ScrollTo extends React.Component{
   }
 
   static scroll(id='scroll-to'){
+    if( typeof window === 'undefined' ){
+      return;
+    }
+
+
     const scrollTo = window.document.getElementById(id);
     if(scrollTo) {
       scrollTo.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });

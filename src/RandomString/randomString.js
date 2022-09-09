@@ -1,4 +1,12 @@
+/*global window*/
+
+
 export default () => {
+  if( typeof window === 'undefined' ){
+    return '';
+  }
+
+
   const validChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
   let array = new Uint8Array(40);
