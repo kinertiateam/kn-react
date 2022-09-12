@@ -42,7 +42,7 @@ export default (opportunity, steps, mediaSteps) => {
       if(
         !step ||
         !step.shouldGrade ||
-        Array.isArray( step.choices )
+        !Array.isArray( step.choices )
       ){
         return;
       }
