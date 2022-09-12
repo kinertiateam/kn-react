@@ -1,10 +1,13 @@
-const GRADE_MAP = {
-  'A': 4,
-  'B': 3,
-  'C': 2,
-  'D': 1,
-  'F': 0,
-};
+import { GRADES } from './opportunityConstants';
+
+
+const GRADE_MAP = {};
+
+
+GRADES.forEach((g, i) => {
+  // Ensure the last value has a score of 0
+  GRADE_MAP[ g ] = Object.keys( GRADES ).length - i - 1;
+});
 
 
 export default (opportunity, steps, mediaSteps) => {
@@ -15,7 +18,11 @@ export default (opportunity, steps, mediaSteps) => {
 
   const { additionalData } = opportunity;
 
-  if( !( steps && mediaSteps && additionalData ) ){
+  if( !(
+    steps &&
+    mediaSteps &&
+    Array.isArray( additionalData )
+  ) ){
     return;
   }
 
@@ -32,7 +39,11 @@ export default (opportunity, steps, mediaSteps) => {
         s => s.key === d.key
       );
 
-      if( !step || !step.shouldGrade ){
+      if(
+        !step ||
+        !step.shouldGrade ||
+        Array.isArray( step.choices )
+      ){
         return;
       }
 
@@ -50,13 +61,16 @@ export default (opportunity, steps, mediaSteps) => {
     }
   ).filter(g => g);
 
-  if( !grades || !grades.length ){
+  if(
+    !Array.isArray( grades ) ||
+    !grades.length
+  ){
     return;
   }
 
 
   const gradeScores = grades.map(
-    g => GRADE_MAP[ g ]
+    g => GRADE_MAP[ g ] || 0
   );
 
   const gradeScore = gradeScores.reduce((a, b) => a+b, 0) / gradeScores.length;

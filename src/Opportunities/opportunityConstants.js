@@ -35,6 +35,15 @@ export const MAX_DISTANCE_MILES = 'maxDistanceMiles';
 export const MAX_DISTANCE_KILOMETERS = 'maxDistanceKilometers';
 
 
+export const GRADES = [
+  'A',
+  'B',
+  'C',
+  'D',
+  'F'
+];
+
+
 
 export default {
   DESCRIPTION_KEY,
@@ -66,4 +75,5 @@ export default {
   MAX_DISTANCE_METERS,
   MAX_DISTANCE_MILES,
   MAX_DISTANCE_KILOMETERS,
+  GRADES
 };
