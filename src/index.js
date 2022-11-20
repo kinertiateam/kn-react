@@ -22,3 +22,4 @@ export { default as EntityAnalysisPhraseTrie } from './Trie/EntityAnalysisPhrase
 export { default as constructPostMeetingTranscript } from './Transcripts/constructPostMeetingTranscript';
 export { default as gradeOpportunity } from './Opportunities/gradeOpportunity';
 export { default as opportunityConstants } from './Opportunities/opportunityConstants';
+export { default as bounce } from './Animations/bounce';
