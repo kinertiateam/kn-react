@@ -8,6 +8,8 @@ const ACTIVE_BOUNCE_DATASET_ID = 'gbActiveBounce';
 
 const STOP_BOUNCE_ERROR = Error( STOP_BOUNCE_ERROR );
 
+const ALLOWED_POSITION_TYPES = ['absolute', 'fixed'];
+
 
 
 let STOP_BOUNCE;
@@ -34,7 +36,7 @@ const bounce = (elementId, options={}, forceBounce=false) => {
 
     if(
       !element ||
-      element.style.position !== 'absolute' ||
+      !ALLOWED_POSITION_TYPES.includes( element.style.position ) ||
       ( !forceBounce && element.dataset[ activeBounceDatasetId ] )
     ){
       return;
