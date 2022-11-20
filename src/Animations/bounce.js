@@ -1,19 +1,31 @@
 const TOTAL_DELTA_PX = 10;
+const INITIAL_WAIT_TIMEOUT_MILLISECONDS = 0;
 const INITIAL_MOVE_UP_WAIT_TIMEOUT_MILLISECONDS = 1 * 1000;
 const BETWEEN_BOUNCE_WAIT_TIMEOUT_MILLISECONDS = 5 * 1000;
 const BETWEEN_MOVE_WAIT_TIMEOUT_MILLISECONDS = 1;
 
 const ACTIVE_BOUNCE_DATASET_ID = 'gbActiveBounce';
 
+const STOP_BOUNCE_ERROR = Error( STOP_BOUNCE_ERROR );
 
 
-const bounce = (elementId, forceBounce=false, options={}) => {
+
+let STOP_BOUNCE;
+let STOP_BOUNCE_CALLBACK;
+let RESTART_BOUNCE_TIMEOUT;
+
+const bounce = (elementId, options={}, forceBounce=false) => {
   // run in try-catch because element with id of elementId
   // may be removed from the page at any point
   try{
+    // Clear any timeout, if present
+    RESTART_BOUNCE_TIMEOUT = null;
+
+
     const element = document.getElementById( elementId );
 
     const totalDeltaPx = options.totalDeltaPx || TOTAL_DELTA_PX;
+    const initialWaitTimeoutMilliseconds = options.initialWaitTimeoutMilliseconds || INITIAL_WAIT_TIMEOUT_MILLISECONDS;
     const initialMoveUpWaitTimeoutMilliseconds = options.initialMoveUpWaitTimeoutMilliseconds || INITIAL_MOVE_UP_WAIT_TIMEOUT_MILLISECONDS;
     const betweenBounceWaitTimeoutMilliseconds = options.betweenBounceWaitTimeoutMilliseconds || BETWEEN_BOUNCE_WAIT_TIMEOUT_MILLISECONDS;
     const betweenMoveWaitTimeoutMilliseconds = options.betweenMoveWaitTimeoutMilliseconds || BETWEEN_MOVE_WAIT_TIMEOUT_MILLISECONDS;
@@ -22,7 +34,7 @@ const bounce = (elementId, forceBounce=false, options={}) => {
 
     if(
       !element ||
-      element.style.position === 'absolute' ||
+      element.style.position !== 'absolute' ||
       ( !forceBounce && element.dataset[ activeBounceDatasetId ] )
     ){
       return;
@@ -70,13 +82,26 @@ const bounce = (elementId, forceBounce=false, options={}) => {
         5. Long pause, Repeat
     */
 
-    return moveUp(
-      () => moveDown(
-        () => moveUp(
-          () => moveDown(
-            () => setTimeout(
-              () => bounce(elementId, true, options),
-              betweenBounceWaitTimeoutMilliseconds
+    setTimeout(
+      () => moveUp(
+        () => moveDown(
+          () => moveUp(
+            () => moveDown(
+              () => {
+                if( STOP_BOUNCE && STOP_BOUNCE_CALLBACK ){
+                  return STOP_BOUNCE_CALLBACK();
+                } else if( STOP_BOUNCE ) {
+                  return;
+                }
+
+                RESTART_BOUNCE_TIMEOUT = setTimeout(
+                  () => bounce(elementId, options, true),
+                  betweenBounceWaitTimeoutMilliseconds
+                );
+              },
+              null,
+              0,
+              betweenMoveWaitTimeoutMilliseconds
             ),
             null,
             0,
@@ -86,13 +111,25 @@ const bounce = (elementId, forceBounce=false, options={}) => {
           0,
           betweenMoveWaitTimeoutMilliseconds
         ),
-        null,
-        0,
-        betweenMoveWaitTimeoutMilliseconds
+        initialMoveUpWaitTimeoutMilliseconds,
+        betweenMoveWaitTimeoutMilliseconds * 1.5
       ),
-      initialMoveUpWaitTimeoutMilliseconds,
-      betweenMoveWaitTimeoutMilliseconds * 1.5
+      initialWaitTimeoutMilliseconds
     );
+
+
+    return callback => {
+
+      if( RESTART_BOUNCE_TIMEOUT ){
+        clearTimeout( RESTART_BOUNCE_TIMEOUT );
+
+        return callback && callback();
+      }
+
+
+      STOP_BOUNCE = true;
+      STOP_BOUNCE_CALLBACK = callback;
+    };
   } catch(error) {
     // Element was likely removed
   }

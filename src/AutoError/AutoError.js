@@ -1,3 +1,5 @@
+import log from '../Log/log';
+
 export default class AutoError extends Error {
   constructor(name, message, options = {}){
     options = options || {};
@@ -6,7 +8,7 @@ export default class AutoError extends Error {
   }
 
   static catch(error){
-    console.log(error.stack);
+    log(error.stack);
     const handler = this[`on${error.name}`];
     return handler ? handler(error) : null;
   }
