@@ -144,3 +144,7 @@ const move = (elementId, totalDeltaPx, deltaPx, callback, timeoutMs, currentDelt
     // See error note in `bounce`
   }
 }
+
+
+
+export default bounce;
