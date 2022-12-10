@@ -46,9 +46,14 @@ const bounce = (elementId, options={}, forceBounce=false) => {
     element.dataset[ activeBounceDatasetId ] = '';
 
 
-    const allowedTotalDeltaPx = Math.min(
-      totalDeltaPx,
-      element.parentElement.getBoundingClientRect().height
+    const allowedTotalDeltaPx = (
+      options.forceTotalDeltaPx ?
+        totalDeltaPx
+      :
+        Math.min(
+          totalDeltaPx,
+          element.parentElement.getBoundingClientRect().height
+        )
     );
 
 
