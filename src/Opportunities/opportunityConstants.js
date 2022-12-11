@@ -11,6 +11,10 @@ export const PAYMENT_KEY = 'PAYMENT';
 export const CONTACT_KEY = 'CONTACT';
 export const PHOTO_KEY = 'PHOTO';
 export const VIDEO_KEY = 'VIDEO';
+export const FIRST_NAME_KEY = 'FIRST_NAME';
+export const LAST_NAME_KEY = 'LAST_NAME';
+export const EMAIL_KEY = 'EMAIL';
+export const PHONE_NUMBER_KEY = 'PHONE_NUMBER';
 
 
 export const ADDRESS_AUTOSUGGEST = 'AddressAutosuggest';
@@ -21,12 +25,6 @@ export const VIDEO_UPLOAD = 'VideoUpload';
 
 export const INPUT_INPUT_TYPE = 'input';
 export const TEXT_AREA_INPUT_TYPE = 'textArea';
-
-export const FIRST_NAME_INPUT_LABEL = 'First Name';
-export const LAST_NAME_INPUT_LABEL = 'Last Name';
-export const PHONE_NUMBER_INPUT_LABEL = 'Phone Number';
-export const EMAIL_INPUT_LABEL = 'Email';
-export const ADDITIONAL_INFORMATION_INPUT_LABEL = 'Additional Information';
 
 export const VIRTUAL_WORK_REQUEST_CONTACT = 'VIRTUAL_WORK_REQUEST_CONTACT';
 
