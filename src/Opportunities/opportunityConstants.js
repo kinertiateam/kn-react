@@ -15,6 +15,7 @@ export const FIRST_NAME_KEY = 'FIRST_NAME';
 export const LAST_NAME_KEY = 'LAST_NAME';
 export const EMAIL_KEY = 'EMAIL';
 export const PHONE_NUMBER_KEY = 'PHONE_NUMBER';
+export const ADDITIONAL_INFORMATION_INPUT_KEY = 'MESSAGE';
 
 
 export const ADDRESS_AUTOSUGGEST = 'AddressAutosuggest';
@@ -72,5 +73,6 @@ export default {
   FIRST_NAME_KEY,
   LAST_NAME_KEY,
   EMAIL_KEY,
-  PHONE_NUMBER_KEY
+  PHONE_NUMBER_KEY,
+  ADDITIONAL_INFORMATION_INPUT_KEY
 };
