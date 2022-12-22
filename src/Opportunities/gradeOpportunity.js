@@ -10,32 +10,22 @@ GRADES.forEach((g, i) => {
 });
 
 
-export default (opportunity, steps, mediaSteps) => {
-  if( !( opportunity && steps && mediaSteps ) ){
+export default (opportunity, steps) => {
+  if( !( opportunity && Array.isArray( steps ) ) ){
     return;
   }
 
 
   const { additionalData } = opportunity;
 
-  if( !(
-    steps &&
-    mediaSteps &&
-    Array.isArray( additionalData )
-  ) ){
+  if( !Array.isArray( additionalData ) ){
     return;
   }
 
 
-  const allSteps = (
-    steps || []
-  ).concat(
-    mediaSteps || []
-  );
-
   const grades = additionalData.map(
     d => {
-      const step = allSteps.find(
+      const step = steps.find(
         s => s.key === d.key
       );
 
