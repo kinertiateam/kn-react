@@ -23,3 +23,11 @@ export { default as constructPostMeetingTranscript } from './Transcripts/constru
 export { default as gradeOpportunity } from './Opportunities/gradeOpportunity';
 export { default as opportunityConstants } from './Opportunities/opportunityConstants';
 export { default as bounce } from './Animations/bounce';
+export { optimizeImageNode } from './MediaItems/mediaItemHelpers';
+export { constructNode } from './MediaItems/mediaItemHelpers';
+export { hasChildren } from './MediaItems/mediaItemHelpers';
+export { isMediaItemOptimized } from './MediaItems/mediaItemHelpers';
+export { FILE_SIZES } from './MediaItems/mediaItemHelpers';
+export { parseMediaItemUrl } from './MediaItems/mediaItemHelpers';
+export { createSrcSet } from './MediaItems/mediaItemHelpers';
+export { constructPictureChildren } from './MediaItems/mediaItemHelpers';
