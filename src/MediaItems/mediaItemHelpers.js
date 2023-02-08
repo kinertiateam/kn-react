@@ -1,18 +1,21 @@
 export const optimizeImageNode = function(mediaItem){
   return({
     props: {
-      src: mediaItem.is_optimized ? undefined : mediaItem.url,
+      src: isMediaItemOptimized( mediaItem ) ? undefined : mediaItem.url,
       children: (
         !isMediaItemOptimized( mediaItem ) ?
           undefined
         :
           constructPictureChildren(
             mediaItem.url,
-            mediaItem.optimized_image_urls
+            (
+              mediaItem.optimized_image_urls ||
+              mediaItem.optimizedImageUrls
+            )
           )
       ),
     },
-    type: mediaItem.is_optimized ? 'picture' : 'img',
+    type: isMediaItemOptimized( mediaItem ) ? 'picture' : 'img',
   });
 }
 
@@ -27,11 +30,18 @@ export const constructNode = function(mediaItem, props, goBoostPartnersBaseUrl){
   }
 
 
-  if( !mediaItem || !mediaItem.mime_type ){
+  const mimeType = (
+    !mediaItem ?
+      null
+    :
+      ( mediaItem.mime_type || mediaItem.mimeType )
+  );
+
+  if( !mediaItem || !mimeType ){
     return;
-  } else if( mediaItem.mime_type.includes('image') ){
+  } else if( mimeType.includes('image') ){
     node = optimizeImageNode( mediaItem );
-  } else if( mediaItem.mime_type.includes('video') ){
+  } else if( mimeType.includes('video') ){
     node = {
       props: {
         "data-path": 'props.children.0',
@@ -41,7 +51,7 @@ export const constructNode = function(mediaItem, props, goBoostPartnersBaseUrl){
             props: {
               "data-path": "props.children.0.props.children.0",
               src: `${ mediaItem.url }`,
-              type: `${ mediaItem.mime_type }`,
+              type: `${ mimeType }`,
             },
             type: "source"
           },
@@ -50,7 +60,7 @@ export const constructNode = function(mediaItem, props, goBoostPartnersBaseUrl){
       },
       type: "video"
     }
-  } else if( mediaItem.mime_type.includes('audio') ){
+  } else if( mimeType.includes('audio') ){
     node = {
       props: {
         "data-path": 'props.children.0',
@@ -60,7 +70,7 @@ export const constructNode = function(mediaItem, props, goBoostPartnersBaseUrl){
             props: {
               "data-path": "props.children.0.props.children.0",
               src: `${ mediaItem.url }`,
-              type: `${ mediaItem.mime_type }`,
+              type: `${ mimeType }`,
             },
             type: "source"
           },
@@ -69,7 +79,7 @@ export const constructNode = function(mediaItem, props, goBoostPartnersBaseUrl){
       },
       type: "audio"
     }
-  } else if( mediaItem.mime_type.includes('application') ){
+  } else if( mimeType.includes('application') ){
     node = {
       props: {
         "data-path": 'props.children.0',
@@ -133,7 +143,7 @@ export const hasChildren = function( nodeChildren ) {
 
 
 export const isMediaItemOptimized = function(mediaItem){
-  return mediaItem && mediaItem.is_optimized;
+  return mediaItem && ( mediaItem.is_optimized || mediaItem.isOptimized);
 }
 
 
@@ -182,7 +192,7 @@ export const createSrcSet = function(parsedUrl, intendedExtension){
   const filenameWithoutExtension = parsedUrl.filename.replace(new RegExp(`\\.${ parsedUrl.fileExtension }$`), '');
 
   const pathWithoutFile = parsedUrl.gcsFilepath.replace(new RegExp(`\/${ parsedUrl.filename }$`), '');
-  const basePath = `https://storage.googleapis.com/${parsedUrl.gcsBucket}/${pathWithoutFile}`;
+  const basePath = `https://storage.googleapis.com/${ parsedUrl.gcsBucket }/${ pathWithoutFile }`;
 
   let srcSet = '';
   let sizes = '';
