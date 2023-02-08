@@ -1,4 +1,4 @@
-export const optimizeImageNode = function(mediaItem){
+export const optimizeImageNode = function(mediaItem, props){
   return({
     props: {
       src: isMediaItemOptimized( mediaItem ) ? undefined : mediaItem.url,
@@ -8,6 +8,7 @@ export const optimizeImageNode = function(mediaItem){
         :
           constructPictureChildren(
             mediaItem.url,
+            props,
             (
               mediaItem.optimized_image_urls ||
               mediaItem.optimizedImageUrls
@@ -40,7 +41,7 @@ export const constructNode = function(mediaItem, props, goBoostPartnersBaseUrl){
   if( !mediaItem || !mimeType ){
     return;
   } else if( mimeType.includes('image') ){
-    node = optimizeImageNode( mediaItem );
+    node = optimizeImageNode(mediaItem, props);
   } else if( mimeType.includes('video') ){
     node = {
       props: {
@@ -215,7 +216,7 @@ export const createSrcSet = function(parsedUrl, intendedExtension){
 
 
 
-export const constructPictureChildren = function(mediaItemUrl, optimizedImageUrls){
+export const constructPictureChildren = function(mediaItemUrl, props, optimizedImageUrls){
   const compressedUrls = optimizedImageUrls.split(',').filter(u => u.includes('_compressed.'));
 
   // We use the `picture` tag with children `source` and `img`
@@ -253,6 +254,11 @@ export const constructPictureChildren = function(mediaItemUrl, optimizedImageUrl
     key: optimizedImageTypes.length,
     props: {
       srcSet: mediaItemUrl,
+      id: props.id ? props.id : undefined,
+      style: props.style ? props.style : undefined,
+      className: props.className ? props.className : undefined,
+      alt: props.alt ? props.alt : undefined,
+      loading: props.loading ? props.loading : undefined,
     }
   });
 
